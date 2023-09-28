@@ -96,4 +96,37 @@ while max(len(c0), len(c1), len(c2), len(c3), len(c4)) > 0:  # "While there exis
 print(all_groups)
 print(clist)
 
-# Deal with left over students
+# STEP 5: Reallocate groups for balance
+# Groups must have a maximum of 5, minimum of 4
+
+# If group has <4...
+for group in all_groups:
+    if len(group) > 3:
+        continue
+
+    # ...then remove members of this group...
+
+    # ...and allocate to existing groups of <5
+    while len(group) != 0:
+        transfer = group[0]
+
+        for regroup in all_groups:
+            if len(regroup) <5:
+                regroup.append(transfer)
+                break
+        group.remove(transfer)
+
+print(all_groups)
+# If there exists only 1 incomplete group among groups of 5...
+if len(all_groups[len(all_groups)-1]) < 4 and len(all_groups[len(all_groups)-2])==5:
+    lone_group = all_groups[len(all_groups)-1]
+
+# ...take 1 from each group of 5 until incomplete group reaches 4
+    gnum = 0
+    while len(lone_group) < 4:
+        transfer = all_groups[gnum][0]
+        lone_group.append(transfer)
+        all_groups[gnum].remove(transfer)
+        gnum = gnum+1
+print(all_groups)
+
