@@ -130,3 +130,5 @@ if len(all_groups[len(all_groups)-1]) < 4 and len(all_groups[len(all_groups)-2])
         gnum = gnum+1
 print(all_groups)
 
+# STEP 6: Replace numbers with student names
+
